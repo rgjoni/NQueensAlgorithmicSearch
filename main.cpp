@@ -29,12 +29,13 @@ int main(int argc,char** argv)
     
     //Board b1 = gen.Restart();
    // Board b2 = gen.Restart();
+    printf("Starter Board Configuration: \n");
     b1.printBoard();
-    printf("%d \n",b1.GetValue());
-    printf("----- \n");
+    printf("Starter Board Value: %d \n \n",b1.GetValue());
     b1 = b1.hillClimbing();
+    printf("Hill Climbing Board Configuration \n");
     b1.printBoard();
-    printf("%d \n",b1.GetValue());
+    printf("Hill Climbing Board Value: %d \n",b1.GetValue());
     //c.printBoard();
     //vector<Queen> q = test.getQueensList();
     
