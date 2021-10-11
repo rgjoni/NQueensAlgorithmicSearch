@@ -129,7 +129,7 @@ Board Board::hillClimbing() {
   Board smallestfound = b;
   timer.StartTimer();
   double timelap = 0;
-  maxtime = 10.0;
+  maxtime = 20.0;
   while (timer.GetElapsedTime() < maxtime - 0.1) {
     b = b.getSmallest();
     if (b.GetValue() < smallestfound.GetValue()) {
@@ -188,7 +188,7 @@ Board Board::simulatedAnnealing() {
   Board smallestfound = b;
   timer.StartTimer();
   double timelap = 0;
-  maxtime = 10.0;
+  maxtime = 20.0;
   while(timer.GetElapsedTime() < maxtime - 0.1) {
     Board successor = smallestfound.getRandomSuccessor();
     //printf("%d \n",successor.GetValue());
