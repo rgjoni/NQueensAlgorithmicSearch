@@ -37,10 +37,10 @@ int main(int argc,char** argv)
     //b1 = b1.hillClimbing();
     printf("Hill Climbing Board Configuration \n");
     b1.printBoard();
-    printf("Hill Climbing Board Value: %d \n",b1.GetValue());
+    printf("Hill Climbing Board Value: %d \n",hillClimbing.GetValue());
     printf("Simulated Annealing Board Configuration \n");
     b1.printBoard();
-    printf("Simulated Annealing Board Value: %d \n",b1.GetValue());
+    printf("Simulated Annealing Board Value: %d \n",simulatedAnnealing.GetValue());
 
     //c.printBoard();
     //vector<Queen> q = test.getQueensList();
