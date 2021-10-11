@@ -22,6 +22,11 @@ int main(int argc,char** argv)
     }
     srand((unsigned int)time(NULL));
     Board b1 = Board(nRows,nColumns);
+    printf("Starter Board Configuration: \n");
+    b1.printBoard();
+    printf("Starter Board Value: %d \n \n",b1.GetValue());
+    Board hillClimbing = b1.hillClimbing();
+    Board simulatedAnnealing = b1.simulatedAnnealing();
     //Board b2 = Board(nRows,nColumns);
     //Board b2 = b1.RandomRestart();
     //b1 =b1.
@@ -29,13 +34,14 @@ int main(int argc,char** argv)
     
     //Board b1 = gen.Restart();
    // Board b2 = gen.Restart();
-    printf("Starter Board Configuration: \n");
-    b1.printBoard();
-    printf("Starter Board Value: %d \n \n",b1.GetValue());
-    b1 = b1.hillClimbing();
+    //b1 = b1.hillClimbing();
     printf("Hill Climbing Board Configuration \n");
     b1.printBoard();
     printf("Hill Climbing Board Value: %d \n",b1.GetValue());
+    printf("Simulated Annealing Board Configuration \n");
+    b1.printBoard();
+    printf("Simulated Annealing Board Value: %d \n",b1.GetValue());
+
     //c.printBoard();
     //vector<Queen> q = test.getQueensList();
     

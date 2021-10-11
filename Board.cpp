@@ -129,7 +129,7 @@ Board Board::hillClimbing() {
   Board smallestfound = b;
   timer.StartTimer();
   double timelap = 0;
-  maxtime = 20.0;
+  maxtime = 10.0;
   while (timer.GetElapsedTime() < maxtime - 0.1) {
     b = b.getSmallest();
     if (b.GetValue() < smallestfound.GetValue()) {
@@ -154,4 +154,54 @@ Board Board::getSmallest() {
     }
   }
   return b;
+}
+Board Board::getRandomSuccessor()
+{
+  Board b(*this);
+  std::vector<Board> boards;
+  // get a random queen
+  Queen q  = b.QueensList[rand()%b.QueensList.size()];
+  Timer t;
+  t.StartTimer();
+  int x = rand()%nRows;
+  int y = rand()%nColumns;
+  while(BoardSpaces[x][y] == -1)
+  {
+      if(t.GetElapsedTime()>2)
+      {
+        q  = b.QueensList[rand()%b.QueensList.size()];
+      }
+      x = rand()%nRows;
+      y = rand()%nColumns;
+  }
+  Board test = b;
+  Queen newQueen = Queen(x, y);
+  newQueen.queennumber = q.queennumber;
+  test.BoardSpaces[q.posx][q.posy] = 0;
+  test.BoardSpaces[newQueen.posx][newQueen.posy] = -1;
+  test.QueensList[q.queennumber] = newQueen;
+  return test;
+}
+Board Board::simulatedAnnealing() {
+  //srand((unsigned int)time(NULL));
+  Board b(*this);
+  Board smallestfound = b;
+  timer.StartTimer();
+  double timelap = 0;
+  maxtime = 10.0;
+  while(timer.GetElapsedTime() < maxtime - 0.1) {
+    Board successor = smallestfound.getRandomSuccessor();
+    //printf("%d \n",successor.GetValue());
+    double compareprob = (smallestfound.GetValue()-successor.GetValue())/(maxtime-timer.GetElapsedTime());
+		double expon = exp(compareprob);
+    if (successor.GetValue() < smallestfound.GetValue()) {
+      smallestfound = successor;
+    }
+    else if (expon>(rand()/(double)RAND_MAX))
+		{
+			smallestfound = successor;
+		}
+  }
+  return smallestfound;
+
 }

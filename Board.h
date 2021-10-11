@@ -33,6 +33,8 @@ public:
 	Board hillClimbing();
 	Board getSmallest();
 	Board RandomRestart();
+	Board getRandomSuccessor();
+	Board simulatedAnnealing();
 	// Queen GetRandomSuccessor();
 	 //void GetAllSuccessors(std::vector<Queen> & successors);
 	//void Print(bool printStatistics = true);
