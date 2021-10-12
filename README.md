@@ -46,4 +46,4 @@ In terminal type `make` and hit enter. You will be greeted with an initial board
 
 Changing the board configuration is simple, all it requires is editing one line.
 On line 8 the makefile currently reads `./$(EXEC) 12 12` which configures a 12 by 12 board. To change the board to the configuration you desire the change is 
-'./$(EXEC) (YOUR NUMBER HERE) (YOUR NUMBER HERE)'
+`./$(EXEC) (YOUR NUMBER HERE) (YOUR NUMBER HERE)`
