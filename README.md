@@ -33,7 +33,7 @@ Since we're prone to getting caught in local minimums, we can throw in a random 
 **Drawback**:
 This works for a small board, but when we have to use hillclimbing on a large board, we lose time due to the amount of time it takes to generate succesorrs of a board. So a random restart may be thrown when instead of being trapped in a local minimum, the computational time prevented enough depth from being covered in the search.
 
-**Simulated Annealing**:
+# Simulated Annealing 
 Simulated Annealing performs well where HillClimbing falls short. Instead of choosing local neighbors simulated annealing chooses a random position and may even take a board with a higher value in the hopes of that worse board having a better configuration, using exponential probablities. As well instead of taking all successors we chose a queen and move it to a random position, a random successor.
 
 This reduces the amount of time needed for computational complexity in looking at successors and allows for a global minimum board to be found in much less time.
