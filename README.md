@@ -17,9 +17,9 @@ So the Board Value is equal to
 Have ***V(Board) = 0*** meaning no Queens in conflict
 
 
-# How do we solve it? 
+***How do we solve it?***
 
-**Hill Climbing Approach**
+# Hill Climbing Approach
 
 Get a random configuration of the Queens Board. Look at all possible successors by for each queen, moving a single Queen to all the other open spots vertically in its column and recording the boards value. Then pick the board configuration with the smallest value and repeat until a time limit is reached and hopefully a local minimum is found.
 
