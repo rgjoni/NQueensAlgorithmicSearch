@@ -36,10 +36,10 @@ int main(int argc,char** argv)
    // Board b2 = gen.Restart();
     //b1 = b1.hillClimbing();
     printf("Hill Climbing Board Configuration \n");
-    b1.printBoard();
+    hillClimbing.printBoard();
     printf("Hill Climbing Board Value: %d \n",hillClimbing.GetValue());
     printf("Simulated Annealing Board Configuration \n");
-    b1.printBoard();
+    simulatedAnnealing.printBoard();
     printf("Simulated Annealing Board Value: %d \n",simulatedAnnealing.GetValue());
 
     //c.printBoard();
