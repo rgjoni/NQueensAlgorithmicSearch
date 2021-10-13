@@ -7,7 +7,8 @@ using namespace std;
 
 int main(int argc,char** argv)
 {
-   
+   // printf("\e[?25l");
+    printf("\e[?25h");
     if (argc != 3)
 	{
 		printf("Please specify the number of rows and columns");

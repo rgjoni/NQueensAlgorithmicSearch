@@ -96,7 +96,7 @@ void Board::printBoard() {
   for (int i = 0;i<BoardSpaces.size(); i++) {
     for (int j = 0; j< BoardSpaces[0].size(); j++) {
       if (BoardSpaces[i][j] == 0) {
-        printf("%u ", BoardSpaces[i][j]);
+        printf("- "); //Makes it easier to see the queens
       } else {
         printf("Q ");
       }
@@ -104,6 +104,7 @@ void Board::printBoard() {
     }
     printf("\n");
   }
+  //printf ( "\033[1;");
   // printf("%d \n",GetValue());
 }
 Board Board::getNextLowest() {
