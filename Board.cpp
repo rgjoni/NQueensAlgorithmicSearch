@@ -6,8 +6,6 @@ Board::Board(int r, int c) {
   nColumns = c;
   std::vector<std::vector<int> > matrix(nRows, std::vector<int> (nColumns, 0));
   BoardSpaces = matrix;
-  //srand((unsigned int)time(NULL));
-
   for (int i = 0;i<nRows;i++) {
     int posx = rand() % nRows;
     int posy = rand() % nColumns;
@@ -20,9 +18,7 @@ Board::Board(int r, int c) {
     insertQueen(q);
 
   }
-  //sleep(1);
   value = 0;
-  // sleep(1);
 
 }
 
@@ -52,17 +48,14 @@ std::vector<Board> Board::getSuccesor(Queen q) {
   }
   return boards;
 }
-std::vector<Board> Board::getAllSuccessors(std::vector<Queen> QueensList) {
-  std::vector <Board> succesors;
-  if (QueensList.size() > 0) {
-    succesors = getSuccesor(QueensList[0]);
-    // printf("%lu -----\n",succesors.size());
-    for (int i = 1;i<QueensList.size();i++) {
-      std::vector<Board> tempsuccesors = getSuccesor(QueensList[i]);
-      //printf("%lu -----\n",tempsuccesors.size());
-      succesors.insert(succesors.end(), tempsuccesors.begin(), tempsuccesors.end());
-    }
+std::vector <Board> Board::getAllSuccessors(std::vector<Queen> QueensList) {
+  std::vector < Board > succesors;
+  succesors = getSuccesor(QueensList[0]);
+  for (int i = 1; i < QueensList.size(); i++) {
+    std::vector < Board > tempsuccesors = getSuccesor(QueensList[i]);
+    succesors.insert(succesors.end(), tempsuccesors.begin(), tempsuccesors.end());
   }
+
   return succesors;
 }
 int Board::GetValue() {
@@ -96,7 +89,7 @@ void Board::printBoard() {
   for (int i = 0;i<BoardSpaces.size(); i++) {
     for (int j = 0; j< BoardSpaces[0].size(); j++) {
       if (BoardSpaces[i][j] == 0) {
-        printf("- "); //Makes it easier to see the queens
+        printf("- "); //Makes it easier to read
       } else {
         printf("Q ");
       }
