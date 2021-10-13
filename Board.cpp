@@ -117,26 +117,6 @@ Board Board::RandomRestart() {
   Board b = Board(nRows, nColumns);
   return b;
 }
-// Hill Climbing Algorithm of the Queens Problem
-Board Board::hillClimbing() {
-  Board b(*this);
-  Board smallestfound = b;
-  timer.StartTimer();
-  double timelap = 0;
-  maxtime = 20.0;
-  while (timer.GetElapsedTime() < maxtime - 0.1) {
-    b = b.getSmallest();
-    if (b.GetValue() < smallestfound.GetValue()) {
-      smallestfound = b;
-      timelap = timer.GetElapsedTime();
-    }
-    if (abs(timelap - timer.GetElapsedTime()) > 2) {
-      b = b.RandomRestart();
-    }
-  }
-  return smallestfound;
-
-}
 Board Board::getSmallest() {
   int min = INT_MAX;
   Board b(*this);
@@ -176,6 +156,26 @@ Board Board::getRandomSuccessor()
   test.QueensList[q.queennumber] = newQueen;
   return test;
 }
+// Hill Climbing Algorithm of the Queens Problem
+Board Board::hillClimbing() {
+  Board b(*this);
+  Board smallestfound = b;
+  timer.StartTimer();
+  double timelap = 0;
+  maxtime = 20.0;
+  while (timer.GetElapsedTime() < maxtime - 0.1) {
+    b = b.getSmallest();
+    if (b.GetValue() < smallestfound.GetValue()) {
+      smallestfound = b;
+      timelap = timer.GetElapsedTime();
+    }
+    if (abs(timelap - timer.GetElapsedTime()) > 2) {
+      b = b.RandomRestart();
+    }
+  }
+  return smallestfound;
+
+}
 Board Board::simulatedAnnealing() {
   //srand((unsigned int)time(NULL));
   Board b(*this);
@@ -183,13 +183,15 @@ Board Board::simulatedAnnealing() {
   timer.StartTimer();
   double timelap = 0;
   maxtime = 20.0;
+  int count1 = 0;
+  int count2 = 0;
   while(timer.GetElapsedTime() < maxtime - 0.1) {
     Board successor = smallestfound.getRandomSuccessor();
-    //printf("%d \n",successor.GetValue());
     double compareprob = (smallestfound.GetValue()-successor.GetValue())/(maxtime-timer.GetElapsedTime());
 		double expon = exp(compareprob);
     if (successor.GetValue() < smallestfound.GetValue()) {
       smallestfound = successor;
+      count1++;
     }
     else if (expon>(rand()/(double)RAND_MAX))
 		{
