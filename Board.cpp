@@ -70,11 +70,11 @@ int Board::GetValue() {
       if (QueensList[i].posy == QueensList[j].posy) {
         value++;
       }
-      // Case 3 Diagonal
-      // 
+      // Case 3 Diagonal 
+      // Slope of 1 indicates a diagonal between the queens
       int valx = abs(QueensList[i].posx - QueensList[j].posx);
       int valy = abs(QueensList[i].posy - QueensList[j].posy);
-      if ((valx == 1) && (valy == 1)) {
+      if (valy == valx) {
         value++;
       }
     }
@@ -162,7 +162,7 @@ Board Board::hillClimbing() {
   Board smallestfound = b;
   timer.StartTimer();
   double timelap = 0;
-  maxtime = 20.0;
+  maxtime =20.0;
   while (timer.GetElapsedTime() < maxtime - 0.1) {
     b = b.getSmallest();
     if (b.GetValue() < smallestfound.GetValue()) {
