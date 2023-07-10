@@ -1,4 +1,4 @@
-# NQueens Puzzle
+# NQueens Algorithmic Search
 
 **What is NQueens?** 
 
